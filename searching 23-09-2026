@@ -1,0 +1,13 @@
+struct ListNode* getNodeAtIndex(struct ListNode* head, int index) {
+    struct ListNode *current = head;
+    int counter = 0;
+    
+    while (current != NULL) {
+        if (counter == index) {
+            return current; 
+        }
+        counter++;
+        current = current->next;
+    }
+    
+    return NULL; }
