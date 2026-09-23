@@ -7,10 +7,10 @@ struct Node {
 };
 int countlinkedlist(struct Node *head) {
     int count = 0;
-    struct Node *current = head;
-    while (current != NULL) {
+    struct Node *t = head;
+    while (t != NULL) {
         count++;
-        current = current->next; 
+        t = t->next; 
     }
     
     return count;
