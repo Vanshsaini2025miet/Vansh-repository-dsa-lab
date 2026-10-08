@@ -20,7 +20,7 @@ char peek() {
     return '#';
 }
 
-int is_alphanumeric(char ch) {
+int is_alphabet(char ch) {
     return ((ch >= 'a' && ch <= 'z') || 
             (ch >= 'A' && ch <= 'Z') || 
             (ch >= '0' && ch <= '9'));
@@ -38,7 +38,7 @@ void infixToPostfix(char* infix, char* postfix) {
     char ch;
 
     while ((ch = infix[i++]) != '\0') {
-        if (is_alphanumeric(ch)) {
+        if (is_alphabet(ch)) {
             postfix[j++] = ch;
         } else if (ch == '(') {
             push(ch);
