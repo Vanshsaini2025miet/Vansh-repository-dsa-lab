@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MAX_SIZE 5
+
+int queue[MAX_SIZE];
+int f = 0;
+int r = 0;
+int size = 0;
+
+void enqueue(int x) {
+    if (size == MAX_SIZE) {
+        printf("Queue Overflow! Cannot push %d\n", x);
+        return;
+    }
+    queue[r] = x;
+    r = (r + 1) % MAX_SIZE;
+    size++;
+    printf("Pushed: %d\n", x);
+}
+
+int dequeue() {
+    if (size == 0) {
+        printf("Queue Underflow! Cannot pop\n");
+        return -1;
+    }
+    int val = queue[f];
+    f = (f + 1) % MAX_SIZE;
+    size--;
+    return val;
+}
+
+int queuePeek() {
+    if (size == 0) {
+        printf("Queue is empty! Cannot peek\n");
+        return -1;
+    }
+    return queue[f];
+}
+
+bool queueEmpty() {
+    return size == 0;
+}
+
+int main() {
+    printf("Is queue empty? %s\n", queueEmpty() ? "Yes" : "No");
+
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+
+    printf("Front element: %d\n", queuePeek());
+
+    printf("Popped: %d\n", dequeue());
+    printf("Popped: %d\n", dequeue());
+
+    printf("Front element after pops: %d\n", queuePeek());
+
+    enqueue(40);
+    enqueue(50);
+    enqueue(60);
+    enqueue(70); 
+    enqueue(80); 
+
+    while (!queueEmpty()) {
+        printf("Popped: %d\n", dequeue());
+    }
+
+    return 0;
+}
